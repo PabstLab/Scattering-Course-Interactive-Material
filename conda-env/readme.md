@@ -26,7 +26,7 @@ conda env create -f <path-to>/environment.yml
 
 3. Activate the conda environment:
 ```
-conda activate SAS-MoCa
+conda activate Giove
 ```
 
 4. Open _jupyter lab_ :
