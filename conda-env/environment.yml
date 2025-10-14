@@ -1,0 +1,11 @@
+name: Giove
+channels:
+  - defaults
+dependencies:
+  - jupyterlab
+  - ipywidgets
+  - numpy
+  - scipy
+  - pandas
+  - python
+  - matplotlib
