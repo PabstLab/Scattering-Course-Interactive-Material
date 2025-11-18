@@ -20,7 +20,7 @@ def sphere_amp (x,R):
 ########################################################################################
 """Scaled scattering amplitude of a sphere"""
 def sphere_amp_scaled (y):
-    return 3 * ( np.sin(y) -y*np.cos(y) ) / y**3
+    return 3 * ( np.sin(y) - y*np.cos(y) ) / y**3
 
 ########################################################################################
 """Scattering intensity of a sphere"""
