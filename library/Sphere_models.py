@@ -53,7 +53,7 @@ def sphere_int_normal (x,n,Rm,sR,Dr):
         I = sphere_int(x[:,None],R[None,:],Dr)
     
         I[:,] *= pdf
-        Ipoly = np.trapz(I, R, 6*sR/N, axis=1)
+        Ipoly = np.trapezoid(I, R, 6*sR/N, axis=1)
 
     return n * Ipoly
 ########################################################################################
@@ -73,7 +73,7 @@ def sphere_int_normal_2D (q,n,Rm,sR,Dr):
         I = sphere_int(q[:,:,None],R[None,:],Dr)
        
         I[:,:,] *= pdf
-        Ipoly = np.trapz(I, R, 6*sR/N, axis=2)
+        Ipoly = np.trapezoid(I, R, 6*sR/N, axis=2)
 
     return n * Ipoly
     
@@ -93,7 +93,7 @@ def sphere_int_lognorm (x,n,m,s,Dr):
 
     Ipoly = np.empty([x.size])
     I[:,] *= pdf
-    Ipoly = np.trapz(I, R, (Rm+8*sR)/N, axis=1)
+    Ipoly = np.trapezoid(I, R, (Rm+8*sR)/N, axis=1)
 
     return n * Ipoly
 
@@ -124,7 +124,7 @@ def sphere_core_shell_int_normal (x,n,R0,sigma,DR,rs,r0,r1):
         I = sphere_core_shell_int(x[:,None],R[None,:],DR,rs,r0,r1)
    
         I[:,] *= pdf
-        Ipoly = np.trapz(I, R, 6*sigma/N, axis=1)
+        Ipoly = np.trapezoid(I, R, 6*sigma/N, axis=1)
 
     elif sigma == 0:
         Ipoly = sphere_core_shell_int(x,R0,DR,rs,r0,r1)
@@ -165,7 +165,7 @@ def sphere_core_3xshell_int_normal (x,n,R0,sigma,d_h,d_t,r_h,r_t,r_s):
         I = sphere_core_3xshell_int(x[:,None],R[None,:],d_h,d_t,r_h,r_t,r_s)
    
         I[:,] *= pdf
-        Ipoly = np.trapz(I, R, 6*sigma/N, axis=1)
+        Ipoly = np.trapezoid(I, R, 6*sigma/N, axis=1)
 
     elif sigma == 0:
         Ipoly = sphere_core_3xshell_int(x,R0,d_h,d_t,r_h,r_t,r_s)
@@ -206,7 +206,7 @@ def sphere_core_5xshell_int_normal (x,n,R0,sigma,d_h,d_t,d_m,r_h,r_t,r_m,r_s):
         I = sphere_core_5xshell_int(x[:,None],R[None,:],d_h,d_t,d_m,r_h,r_t,r_m,r_s)
    
         I[:,] *= pdf
-        Ipoly = np.trapz(I, R, 6*sigma/N, axis=1)
+        Ipoly = np.trapezoid(I, R, 6*sigma/N, axis=1)
 
     elif sigma == 0:
         Ipoly = sphere_core_5xshell_int(x,R0,d_h,d_t,d_m,r_h,r_t,r_m,r_s)

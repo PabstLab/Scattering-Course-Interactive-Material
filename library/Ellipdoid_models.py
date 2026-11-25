@@ -38,7 +38,7 @@ def ellipsoid_int (n, q, Dr, R, e, con):
     I_partial = ellipsoid_amp(q, R, e,t)**2
 
     ### Calculating orientation average
-    I = np.trapz(I_partial, t, 1/(Nt-1), axis=1)
+    I = np.trapezoid(I_partial, t, 1/(Nt-1), axis=1)
     
     return n * Dr**2 * I + con
 
@@ -58,8 +58,8 @@ def ellipsoid_int_normal (n, q, Dr, R, rel, e, con):
     A = (4./3.*np.pi*R_array[None,:,None]**3*e) * 3 * ( np.sin(q[:,None,None]*u[None,:,:]) - q[:,None,None]*u[None,:,:]*np.cos(q[:,None,None]*u[None,:,:]) ) / (q[:,None,None]*u[None,:,:])**3
     
     I_full = A**2 * PDF_norm(R_array[None,:,None], R, R*rel)
-    I_poly = np.trapz(I_full, t, 1/(Nt-1), axis=2)
-    I = np.trapz(I_poly, R_array, 6*R*rel/Np, axis=1)
+    I_poly = np.trapezoid(I_full, t, 1/(Nt-1), axis=2)
+    I = np.trapezoid(I_poly, R_array, 6*R*rel/Np, axis=1)
 
     return n * Dr**2 * I + con
 
@@ -86,7 +86,7 @@ def ellipsoid_coreshell_int_normal (n, q, r0, r1, rs, R0, DR, rel, e, con):
     A = (r1-rs)*A1 + (r0-r1)*A0
 
     I_full = A**2 * PDF_norm(R_array[None,:,None], R0, R0*rel)
-    I_poly = np.trapz(I_full, t, 1/(Nt-1), axis=2)
-    I = np.trapz(I_poly, R_array, 6*R0*rel/Np, axis=1)
+    I_poly = np.trapezoid(I_full, t, 1/(Nt-1), axis=2)
+    I = np.trapezoid(I_poly, R_array, 6*R0*rel/Np, axis=1)
 
     return n * I + con

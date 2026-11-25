@@ -34,6 +34,6 @@ def cylinder_int (q,Dr,R,H):
     I_partial = cylinder_amp(q,R,H,t)**2
 
     ### Calculating orientation average
-    I = np.trapz(I_partial, t, 1/(Nt-1), axis=1)
+    I = np.trapezoid(I_partial, t, 1/(Nt-1), axis=1)
     
     return Dr**2 * I
